@@ -1,0 +1,38 @@
+
+POST http://localhost:3333/v1/categories HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name" : "SUV",
+    "description" : "Veículo utilitário esportivo ou Veículo Desportivo"
+}
+
+###
+
+GET http://localhost:3333/v1/categories
+
+###
+
+GET http://localhost:3333/v1/categories/SUV
+
+###
+
+POST http://localhost:3333/v1/specifications HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+    "name" : "Airbags",
+    "description" : "Os airbags são almofadas de enchimento rápido destinadas a proteger os passageiros em caso de colisão. Airbags são equipamentos bastante padrão em veículos modernos."
+}
+
+###
+
+GET http://localhost:3333/v1/specifications
+
+###
+
+GET http://localhost:3333/v1/specifications/Airbags
+
+###
