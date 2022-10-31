@@ -18,7 +18,7 @@ swaggerRoutes.use("/swagger", swaggerUi.serve);
 
 swaggerRoutes.get(
   "/swagger",
-  swaggerUi.setup(null, {
+  swaggerUi.setup(swaggerDocs, {
     swaggerOptions: {
       url: "/swagger/swagger.json",
     },

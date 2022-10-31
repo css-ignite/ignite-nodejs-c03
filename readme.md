@@ -503,6 +503,148 @@ yarn add -D @types/swagger-jsdoc
 
 ```
 
+### Utilização do swagger
+
+Para gerar a documentação automatica eu criei uma rota para o swagger:
+
+```typescript
+
+import { Router } from "express";
+import swaggerJsDoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
+
+import { swaggerOptions } from "../../swagger/swaggerOptions";
+
+const swaggerRoutes = Router();
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+
+swaggerRoutes.use(
+  "/swagger/docs/default",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerDocs)
+);
+
+swaggerRoutes.use("/swagger", swaggerUi.serve);
+
+swaggerRoutes.get(
+  "/swagger",
+  swaggerUi.setup(swaggerDocs, {
+    swaggerOptions: {
+      url: "/swagger/swagger.json",
+    },
+  })
+);
+
+swaggerRoutes.get("/swagger/swagger.json", (req, res) => res.json(swaggerDocs));
+
+swaggerRoutes.get("/swagger/docs", (request, response) => {
+  const { protocol, baseUrl } = request;
+  const fullUrl = `${protocol}://${request.get("host")}${baseUrl}`;
+
+  const htmlFile = `
+    <body>
+      <div id="redoc-container"></div>
+      <script src="https://cdn.jsdelivr.net/npm/redoc@2.0.0-rc.55/bundles/redoc.standalone.min.js"> </script>
+      <script src="https://cdn.jsdelivr.net/gh/wll8/redoc-try@1.4.1/dist/try.js"></script>
+      <script>
+        initTry({
+          openApi:'${fullUrl}/swagger/swagger.json'
+        });
+      </script>
+    </body>
+  `;
+
+  response.send(htmlFile);
+});
+
+export { swaggerRoutes };
+
+
+```
+
+Nesta rota estou passando um arquivo de configuração para o swagger-jsdoc.
+
+```typescript
+
+import { swaggerApiErrorSchema } from "./schemas/swaggerApiErrorSchema";
+import { swaggerApiResponseSchema } from "./schemas/swaggerApiResponseSchema";
+import { swaggerCategorySchema } from "./schemas/swaggerCategorySchema";
+import { swaggerSpecificationsSchema } from "./schemas/swaggerSpecificationsSchema";
+
+const swaggerApiDescription = `
+  <p style="line-height: 0">API desenvolvida durante as aulas do curso Ignite Trilha NodeJS.\n
+  Esta api foi desenvolvida baseada na OpenAPI 3.0 specification. \n
+  Você pode conhecer um pouco mais sobre o swagger em [https://swagger.io](https://swagger.io). \n
+  Esta API foi desenvolvida durante as aulas do curso Ignite da Rocketseat. Durante as aulas fui
+  aprendendo sobre o desenvolvimento de APIs utilizando NodeJS e Typescript e durante seu desenvolvimento
+  fui apresentado aso conceitos do SOLID onde pude aplicar alguns de seus conceitos como o Single Responsability Principle,
+  Dependency Inversion Principle e o liskov substitution principle.\n
+  Trabalhamos também com a organização a estrutura de pastas e arquivos do projeto, e finalizamos com a documentação da API
+  utilizando o swagger.\n
+  Como conteúdo adicional busquei formas de melorar o processo de documentação e pude aplicar algumas técnicas utilizando o
+  wagger-jsdoc e o swagger-autogen para gerar a documentação automatica a API no momento de sua execução o que possibilita manter
+  a API sempre atualizada sem muito esforço, apliquei tamtém uma estilizaçao na API com o ReDoc.\n
+  </p>
+  `;
+
+const swaggerOptions = {
+  swaggerDefinition: {
+    openapi: "3.0.3",
+    info: {
+      title: "RentalX - Api de Integração",
+      version: "1.0.0",
+      description: swaggerApiDescription,
+      contact: {
+        email: "claudneysartisessa@gmail.com",
+      },
+    },
+    servers: [
+      {
+        url: "{protocol}://{baseUrl}:{port}/v1",
+        variables: {
+          protocol: {
+            enum: ["http", "https"],
+            default: "http",
+          },
+          baseUrl: {
+            default: "localhost",
+            description:
+              "This value is assigned by the service provider, in this example `gigantic-server.com`",
+          },
+          port: {
+            enum: ["3333", "80", "8080"],
+            default: "3333",
+          },
+        },
+      },
+    ],
+    components: {
+      schemas: {
+        Category: swaggerCategorySchema,
+        Specifications: swaggerSpecificationsSchema,
+        ApiError: swaggerApiErrorSchema,
+        ApiResponse: swaggerApiResponseSchema,
+      },
+    },
+  },
+  apis: ["**/*.ts"],
+};
+
+export { swaggerOptions };
+
+```
+
+Neste aqruivo eu criei um objeto com as configurações do swagger, como o titulo, a versão, a descrição, o contato, os servidores, os schemas e as apis que serão documentadas.
+
+Criei também uma pasta para organizar os schemas e ps paths do swagger, mantendo assim a organização do projeto.
+
+Estou utilizando o swagger-jsdoc para gerar a documentação da API, e o swagger-ui-express para exibir a documentação da API.
+
+Desta forma pude incluir direto no projeto a possibilidade de documentar a API utilizando o swagger de forma automática, simples e organizada.
+
+A documentação será gerada automaticamente a cada execução da API, e a documentação pode ser acessada através da rota /swagger/docs.
+
 ### Adicionando o swagger-autogen
 
 O `swagger-autogen` é um pacote que permite que você adicione o swagger ao seu projeto.
@@ -565,7 +707,7 @@ yarn add -D @types/supertest
 
 ```
 
-### UUId
+## UUId
 
 ### Adicionando o uuid
 
@@ -576,6 +718,18 @@ O `uuid` é um pacote que permite que você gere um id único.
 yarn add uuid
 
 ```
+
+O uuid é um pacote que permite que você gere um id único.
+
+Dentro do UUid temos 4 versões:
+
+- v1: Gera um id baseado no tempo e no MAC address do computador.
+- v2: Gera um id baseado no tempo e no MAC address do computador.
+- v3: Gera um id baseado em um namespace e em um nome.
+- v4: Gera um id aleatório.
+- v5: Gera um id baseado em um namespace e em um nome.
+
+Para esta aplicação, vamos utilizar a versão 4.
 
 ### Adicionando o @types/uuid
 
