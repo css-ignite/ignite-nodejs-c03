@@ -903,3 +903,7 @@ A segunda configuração eu habilito o debugger no docker, possibilitando o debu
 ```
 
 Para utilizar o debugger no container nos executamos o docker-compose up -d, e depois executamos o comando F5 para attachar no container.
+
+Observe que estou utilizando a porta 3339, pois a porta 3333 está sendo utilizada pelo container.
+
+No meu script do docker-compose.yml eu estou utilizando a porta 3333 para a API, e estou utilizando a porta 3339 para o --inspect=0.0.0.0:3339 configurado la no meu package.json quando solicito a execução pelo ts-node-dev.
