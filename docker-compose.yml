@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  rentx:
+    build: .
+    container_name: rentx
+    ports:
+      - "3333:3333"
+    volumes:
+      - .:/Users/claudneysessa/Developer/Docker/NodeJS/chapter02/rentx
