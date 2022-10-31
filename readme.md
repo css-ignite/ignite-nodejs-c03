@@ -103,6 +103,8 @@ docker build -t rentx .
 
 ```
 
+Ao executar o comando acima, o docker irá criar a imagem rentx, utilizando o Dockerfile que está no diretório atual.
+
 ### Executando o container e apontando a porta para utilização da API
 
 Aqui vamos executar o container e apontar a porta para utilização da API, para isso, vamos utilizar o comando:
@@ -112,6 +114,8 @@ Aqui vamos executar o container e apontar a porta para utilização da API, para
 docker run -p 3333:3333 rentx
 
 ```
+
+Ao executar o comando acima, o docker irá executar o container rentx, e apontar a porta 3333 do container para a porta 3333 do host.
 
 ### Executando comandos dentro do docker
 
@@ -177,6 +181,8 @@ docker-compose up
 docker-compose up -d
 
 ```
+
+Com o `docker-compose up` você pode iniciar todos os containers de uma vez, e com o `docker-compose up -d` você pode iniciar todos os containers em background, ou seja, você pode continuar utilizando o terminal, sem precisar ficar parado esperando o container iniciar.
 
 ### Verificando os containers
 
