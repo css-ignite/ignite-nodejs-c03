@@ -127,6 +127,8 @@ docker exec -it recursing_bose /bin/bash
 
 O docker-compose é uma ferramenta para definir e executar aplicativos Docker com vários contêineres. Com o docker-compose, você usa um arquivo YAML para configurar os serviços do seu aplicativo. Em vez de executar um comando docker longo para iniciar um único contêiner, você pode executar docker-compose up e iniciar todos os serviços definidos em seu arquivo docker-compose.yml.
 
+A diferença entre o Dockerfile e o docker-compose é que o Dockerfile é utilizado para criar uma imagem, e o docker-compose é utilizado para criar um container, com o docker-compose, podemos criar vários containers, e cada um deles pode ter uma imagem diferente.
+
 ### Arquivo docker-compose.yml
 
 ```yml
@@ -192,6 +194,10 @@ docker ps -a
 
 ```
 
+Ao utilizar o comando `docker ps`, podemos ver que os containers que estão em execução.
+
+Ao utilizar o comando `docker ps -a`, podemos ver que os containers que estão em execução e os que não estão em execução.
+
 ### Executar logs do container
 
 Com este comando apresenta os logs do container quando este estiver sendo executado em background.
@@ -203,6 +209,8 @@ docker logs rentx -f
 
 ```
 
+Ao utilizar o comando `docker logs rentx -f` é possível acompanhar os logs do container rentx em tempo real.
+
 ### Executar comandos dentro do container
 
 Com este comando eu abro um canal de comunicação com o container, assim eu consigo executar comandos dentro do container.
@@ -213,3 +221,27 @@ Com este comando eu abro um canal de comunicação com o container, assim eu con
 docker exec -it rentx /bin/bash
 
 ```
+
+### Parar o container
+
+Com este comando eu paro o container.
+
+```bash
+
+docker-compose stop
+
+```
+
+O comando  `docker-compose stop`  para todos os contêineres definidos em um arquivo docker-compose.yml. Ele também para contêineres associados a contêineres definidos no arquivo docker-compose.yml.
+
+### Remover o container
+
+Com este comando eu removo o container.
+
+```bash
+
+docker-compose down
+
+```
+
+O comando `docker-compose down` remove os contêineres, as redes, os volumes e as imagens criadas pelo comando docker-compose up.
