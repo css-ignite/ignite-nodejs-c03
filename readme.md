@@ -645,6 +645,8 @@ Desta forma pude incluir direto no projeto a possibilidade de documentar a API u
 
 A documentação será gerada automaticamente a cada execução da API, e a documentação pode ser acessada através da rota /swagger/docs.
 
+Como complemento na rota do swagger eu adicionei uma configuração para gerar uma API estilizada utilizando o ReDoc.
+
 ### Adicionando o swagger-autogen
 
 O `swagger-autogen` é um pacote que permite que você adicione o swagger ao seu projeto.
