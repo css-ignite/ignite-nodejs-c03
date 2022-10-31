@@ -127,6 +127,8 @@ docker exec -it recursing_bose /bin/bash
 
 ```
 
+Ao executar o comando acima, o docker irá executar o container recursing_bose, e abrir o terminal do container, para que possamos executar comandos dentro do container.
+
 ## Docker compose
 
 O docker-compose é uma ferramenta para definir e executar aplicativos Docker com vários contêineres. Com o docker-compose, você usa um arquivo YAML para configurar os serviços do seu aplicativo. Em vez de executar um comando docker longo para iniciar um único contêiner, você pode executar docker-compose up e iniciar todos os serviços definidos em seu arquivo docker-compose.yml.
@@ -227,6 +229,8 @@ Com este comando eu abro um canal de comunicação com o container, assim eu con
 docker exec -it rentx /bin/bash
 
 ```
+
+Ao utilizar o comando `docker exec -it rentx /bin/bash` é possível executar comandos dentro do container rentx, como por exemplo, executar o comando `yarn dev`.
 
 ### Parar o container
 
