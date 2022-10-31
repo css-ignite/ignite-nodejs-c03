@@ -23,19 +23,12 @@
                 "NODE_ENV": "development"
             }
         },
-        // Configurando o launch para rodar vinculado ao container docker
         {
-            // Name of the configuration
             "name": "Docker: Attach to Node",
-            // Type of application to attach to
             "type": "node",
-            // Type of request. In this case 'attach'
             "request": "attach",
-            // Restart the debugger whenever it gets disconnected
             "restart": true,
-            // Port to connect to 
             "port": 3339,
-            // Connect to /node directory of docker
             "remoteRoot": "/Users/claudneysessa/Developer/Docker/NodeJS/chapter02/rentx"
         }
     ]

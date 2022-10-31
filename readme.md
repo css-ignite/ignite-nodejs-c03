@@ -847,3 +847,59 @@ docker-compose down
 ```
 
 O comando `docker-compose down` remove os contêineres, as redes, os volumes e as imagens criadas pelo comando docker-compose up.
+
+## Debugger
+
+O debugger é uma ferramenta que permite que você execute seu código passo a passo, analisando o valor de cada variável em cada momento. Ele é muito útil para encontrar erros e bugs no seu código.
+
+### Configurando o debugger
+
+Para configurar o debugger, precisamos criar um arquivo chamado launch.json, que fica dentro da pasta .vscode.
+
+Na configuração abaixo estou habilitando o debugger no F5 de 2 formas.
+
+A primeira eu faço o debugger local com o ts-node-dev possibilitando o debugger local com a reinicialização automática do servidor.
+
+```json
+
+{
+    "name": "Run and Debugger",
+    "type": "node",
+    "request": "launch",
+    "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ts-node-dev",
+    "program": "${workspaceFolder}/src/server.ts",
+    "console": "internalConsole",
+    "internalConsoleOptions": "neverOpen",
+    "autoAttachChildProcesses": true,
+    "restart": true,
+    "sourceMaps": true,
+    "smartStep": true,
+    "trace": true,
+    "showAsyncStacks": true,
+    "timeout": 30000,
+    "skipFiles": [
+        "<node_internals>/**"
+    ],
+    "env": {
+        "NODE_ENV": "development"
+    }
+}
+
+```
+
+A segunda configuração eu habilito o debugger no docker, possibilitando o debugger no container.
+
+```json
+
+{
+    "name": "Docker: Attach to Node",
+    "type": "node",
+    "request": "attach",
+    "restart": true,
+    "port": 3339,
+    "remoteRoot": "/Users/claudneysessa/Developer/Docker/NodeJS/chapter02/rentx"
+}
+
+```
+
+Para utilizar o debugger no container nos executamos o docker-compose up -d, e depois executamos o comando F5 para attachar no container.
