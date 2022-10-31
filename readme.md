@@ -205,7 +205,7 @@ docker logs rentx -f
 
 ### Executar comandos dentro do container
 
-Com este comando eu abro um canal de comunicação com o container possibilitando a execução de comandos no container.
+Com este comando eu abro um canal de comunicação com o container, assim eu consigo executar comandos dentro do container.
 
 ```bash
 
