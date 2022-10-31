@@ -2,15 +2,26 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Run and Debugger",
             "type": "node",
-            "request": "attach",
-            "name": "Launch Program",
+            "request": "launch",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ts-node-dev",
+            "program": "${workspaceFolder}/src/server.ts",
+            "console": "internalConsole",
+            "internalConsoleOptions": "neverOpen",
+            "autoAttachChildProcesses": true,
+            "restart": true,
+            "sourceMaps": true,
+            "smartStep": true,
+            "trace": true,
+            "showAsyncStacks": true,
+            "timeout": 30000,
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "outFiles": [
-                "${workspaceFolder}/**/*.js"
-            ]
+            "env": {
+                "NODE_ENV": "development"
+            }
         }
     ]
 }
