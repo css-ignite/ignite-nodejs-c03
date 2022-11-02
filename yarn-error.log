@@ -1,26 +1,26 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add @types/eslint-plugin-import-helpers
+  C:\Program Files\nodejs\node.exe C:\Users\claud\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/node-sybase
 
 PATH: 
-  /Users/claudneysessa/.yarn/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/claudneysessa/.yarn/bin:/opt/homebrew/bin:/Users/claudneysessa/fvm/default/bin:/opt/homebrew/bin:/Users/claudneysessa/fvm/default/bin
+  C:\Program Files\PowerShell\7;C:\Program Files\Microsoft\jdk-11.0.12.7-hotspot\bin;C:\Python310\Scripts\;C:\Python310\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Embarcadero\Studio\18.0\bin;C:\Users\Public\Documents\Embarcadero\Studio\18.0\Bpl;C:\Program Files (x86)\Embarcadero\Studio\18.0\bin64;C:\Users\Public\Documents\Embarcadero\Studio\18.0\Bpl\Win64;C:\Program Files (x86)\CollabNet\Subversion Client;C:\Program Files (x86)\Embarcadero\RAD Studio\8.0\bin;C:\Users\Public\Documents\RAD Studio\8.0\Bpl;C:\Program Files (x86)\Borland\Delphi7\Bin;C:\Program Files (x86)\Borland\Delphi7\Projects\Bpl\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\SQL Anywhere 16\bin64;C:\Program Files\SQL Anywhere 16\bin32;C:\Program Files\Sybase\SQL Anywhere 9\x64;C:\Program Files\Sybase\SQL Anywhere 9\win32;C:\Program Files\Sybase\Shared\win32;C:\Program Files\Sybase\Shared\Sybase Central 4.3\win32;C:\Program Files\SQL Anywhere 11\bin64;C:\Program Files\SQL Anywhere 11\bin32;C:\Program Files\PowerShell\7\;C:\tools\boss;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files (x86)\IncrediBuild;C:\Program Files\Git\cmd;C:\Users\claud\fvm\default\bin;C:\Program Files\GitHub CLI\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\claud\AppData\Local\Microsoft\WindowsApps;C:\Users\claud\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\claud\AppData\Local\Programs\oh-my-posh\bin;.\modules\.bin;C:\Users\claud\.boss\modules\.bin;C:\Users\claud\.boss\env\bpl;C:\Users\claud\.boss\env\dcu;C:\Users\claud\.boss\env\dcp;C:\Users\claud\.dotnet\tools;C:\Users\claud\AppData\Local\gitkraken\bin;C:\ProgramData\claudney\gitkraken\bin;C:\Users\claud\AppData\Roaming\npm;C:\tools\dart-sdk\bin;C:\Users\claud\AppData\Roaming\Pub\Cache\bin;;C:\Users\claud\AppData\Local\Microsoft\WindowsApps
 
 Yarn version: 
   1.22.19
 
 Node version: 
-  16.17.1
+  16.18.0
 
 Platform: 
-  darwin arm64
+  win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2feslint-plugin-import-helpers: Not found
-      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66145:18)
-      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140890:22)
+  Error: https://registry.yarnpkg.com/@types%2fnode-sybase: Not found
+      at Request.params.callback [as _callback] (C:\Users\claud\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66145:18)
+      at Request.self.callback (C:\Users\claud\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140890:22)
       at Request.emit (node:events:513:28)
-      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141862:10)
+      at Request.<anonymous> (C:\Users\claud\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141862:10)
       at Request.emit (node:events:513:28)
-      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141784:12)
+      at IncomingMessage.<anonymous> (C:\Users\claud\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141784:12)
       at Object.onceWrapper (node:events:627:28)
       at IncomingMessage.emit (node:events:525:35)
       at endReadableNT (node:internal/streams/readable:1358:12)
@@ -34,12 +34,14 @@ npm manifest:
     "author": "Claudney Sarti Sessa <claudneysartisessa@gmail.com>",
     "license": "MIT",
     "scripts": {
-      "dev": "ts-node-dev --inspect=0.0.0.0:3339 --transpile-only --ignore-watch node_modules --respawn src/server.ts"
+      "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+      "debug": "ts-node-dev --inspect=0.0.0.0:3339 --transpile-only --ignore-watch node_modules --respawn src/server.ts"
     },
     "dependencies": {
       "csv-parse": "^5.3.1",
       "express": "^4.18.2",
       "multer": "^1.4.5-lts.1",
+      "node-sybase": "^1.1.8",
       "swagger-autogen": "^2.22.0",
       "swagger-jsdoc": "^6.2.5",
       "swagger-ui-express": "^4.5.0",
@@ -453,6 +455,14 @@ Lockfile:
     dependencies:
       "@typescript-eslint/types" "5.41.0"
       eslint-visitor-keys "^3.3.0"
+  
+  JSONStream@latest:
+    version "1.3.5"
+    resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-1.3.5.tgz#3208c1f08d3a4d99261ab64f92302bc15e111ca0"
+    integrity sha512-E+iruNOY8VV9s4JEbe1aNEm6MiszPRr/UfcHMz0TQh1BXSxHK+ASV1R6W4HpjBhSeS+54PIsAMCBmwD06LLsqQ==
+    dependencies:
+      jsonparse "^1.2.0"
+      through ">=2.2.7 <3"
   
   accepts@~1.3.8:
     version "1.3.8"
@@ -1266,6 +1276,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/functions-have-names/-/functions-have-names-1.2.3.tgz#0404fe4ee2ba2f607f0e0ec3c80bae994133b834"
     integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
   
+  generic-pool@^3.1.7:
+    version "3.9.0"
+    resolved "https://registry.yarnpkg.com/generic-pool/-/generic-pool-3.9.0.tgz#36f4a678e963f4fdb8707eab050823abc4e8f5e4"
+    integrity sha512-hymDOu5B53XvN4QT9dBmZxPX4CWhBPPLguTZ9MMFeFa/Kg0xWVfylOVNlJji/E7yTZWFd/q9GO5TxDLq156D7g==
+  
   get-intrinsic@^1.0.2, get-intrinsic@^1.1.0, get-intrinsic@^1.1.1, get-intrinsic@^1.1.3:
     version "1.1.3"
     resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.1.3.tgz#063c84329ad93e83893c7f4f243ef63ffa351385"
@@ -1642,6 +1657,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.1.tgz#655d50ed1e6f95ad1a3caababd2b0efda10b395c"
     integrity sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==
   
+  jsonparse@^1.2.0:
+    version "1.3.1"
+    resolved "https://registry.yarnpkg.com/jsonparse/-/jsonparse-1.3.1.tgz#3f4dae4a91fac315f71062f8521cc239f1366280"
+    integrity sha512-POQXvpdL69+CluYsillJ7SUhKvytYjW9vG/GKpnf+xP8UWgYEM/RaMzHHofbALDiKbbP1W8UEYmgGl39WkPZsg==
+  
   levn@^0.4.1:
     version "0.4.1"
     resolved "https://registry.yarnpkg.com/levn/-/levn-0.4.1.tgz#ae4562c007473b932a6200d403268dd2fffc6ade"
@@ -1676,6 +1696,11 @@ Lockfile:
     version "4.6.2"
     resolved "https://registry.yarnpkg.com/lodash.mergewith/-/lodash.mergewith-4.6.2.tgz#617121f89ac55f59047c7aec1ccd6654c6590f55"
     integrity sha512-GK3g5RPZWTRSeLSpgP8Xhra+pnjBC56q9FZYe1d5RN3TJ35dbkGy3YqBSMbyCrlbi+CM9Z3Jk5yTL7RCsqboyQ==
+  
+  lodash@^4.17.4:
+    version "4.17.21"
+    resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+    integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
   
   lru-cache@^6.0.0:
     version "6.0.0"
@@ -1758,6 +1783,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
     integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
   
+  moment@^2.18.1:
+    version "2.29.4"
+    resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+    integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
+  
   ms@2.0.0:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -1795,6 +1825,17 @@ Lockfile:
     version "0.6.3"
     resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
     integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
+  
+  node-sybase@^1.1.8:
+    version "1.1.8"
+    resolved "https://registry.yarnpkg.com/node-sybase/-/node-sybase-1.1.8.tgz#28742b8438a186cbe8d949c2a3707f39c0cb124f"
+    integrity sha512-HCkzwmF1UmVoGxcFu/+rBh/pB/9K/6h1PCRHjgbwclWM1R6TZ7Bp9CBa4IH0dr/ydMqlBmv7Eak7jw3aisiFGQ==
+    dependencies:
+      JSONStream latest
+      generic-pool "^3.1.7"
+      lodash "^4.17.4"
+      moment "^2.18.1"
+      validator "^9.0.0"
   
   normalize-path@^3.0.0, normalize-path@~3.0.0:
     version "3.0.0"
@@ -2323,6 +2364,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
     integrity sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==
   
+  "through@>=2.2.7 <3":
+    version "2.3.8"
+    resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
+    integrity sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==
+  
   tiny-glob@^0.2.9:
     version "0.2.9"
     resolved "https://registry.yarnpkg.com/tiny-glob/-/tiny-glob-0.2.9.tgz#2212d441ac17928033b110f8b3640683129d31e2"
@@ -2496,6 +2542,11 @@ Lockfile:
     version "13.7.0"
     resolved "https://registry.yarnpkg.com/validator/-/validator-13.7.0.tgz#4f9658ba13ba8f3d82ee881d3516489ea85c0857"
     integrity sha512-nYXQLCBkpJ8X6ltALua9dRrZDHVYxjJ1wgskNt1lH9fzGjs3tgojGSCBjmEPwkWS1y29+DrizMTW19Pr9uB2nw==
+  
+  validator@^9.0.0:
+    version "9.4.1"
+    resolved "https://registry.yarnpkg.com/validator/-/validator-9.4.1.tgz#abf466d398b561cd243050112c6ff1de6cc12663"
+    integrity sha512-YV5KjzvRmSyJ1ee/Dm5UED0G+1L4GZnLN3w6/T+zZm8scVua4sOhYKWTUrKa0H/tMiJyO9QLHMPN+9mB/aMunA==
   
   vary@~1.1.2:
     version "1.1.2"

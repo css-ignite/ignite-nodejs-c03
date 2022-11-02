@@ -797,19 +797,27 @@ O docker é uma ferramenta muito utilizada em ambientes de desenvolvimento, pois
 
 ```dockerfile
 
+# A instrução FROM indica a imagem base que será utilizada para a criação da imagem final.
 FROM node
 
-WORKDIR /Users/claudneysessa/Developer/Docker/NodeJS/chapter02/rentx
+# A instrução WORKDIR define o diretório de trabalho atual para o diretório especificado.
+WORKDIR /usr/app
 
+# A instrução COPY copia novos arquivos ou diretórios do host e adiciona-os ao sistema de arquivos do container em execução.
 COPY package.json ./
 
+# A instrução RUN executa qualquer comando em uma nova camada e cria uma imagem.
 RUN npm install
 
+# A instrução COPY copia novos arquivos ou diretórios do host e adiciona-os ao sistema de arquivos do container em execução.
 COPY . .
 
+# A instrução EXPOSE informa ao Docker que o contêiner escuta na porta especificada em tempo de execução.
 EXPOSE 3333
+EXPOSE 3339
 
-CMD ["npm", "run", "dev"]
+# A instrução CMD especifica o comando padrão que será executado quando o contêiner for iniciado.
+CMD ["npm", "run", "debug"]
 
 ```
 
@@ -887,16 +895,29 @@ A diferença entre o Dockerfile e o docker-compose é que o Dockerfile é utiliz
 
 ```yml
 
+# A instrução version indica qual versão do docker-compose será utilizada.
 version: "3.7"
 
+# A instrução services indica quais serviços serão utilizados.
 services:
+  
+  # A instrução db é o nome do serviço.
   rentx:
+    
+    # A instrução build indica qual será a imagem que será utilizada para a criação do container do serviço. Nesse caso, estamos utilizando a imagem rentx.
     build: .
+    
+    # A instrução container_name indica qual será o nome do container do serviço.
     container_name: rentx
+    
+    # A instrução ports indica quais portas serão expostas do container do serviço.
     ports:
       - "3333:3333"
+      - "3339:3339"
+    
+    # A instrução volumes indica quais volumes serão utilizados do container do serviço.
     volumes:
-      - .:/Users/claudneysessa/Developer/Docker/NodeJS/chapter02/rentx
+      - .:/usr/app
 
 ```
 
@@ -1053,7 +1074,7 @@ A segunda configuração eu habilito o debugger no docker, possibilitando o debu
     "request": "attach",
     "restart": true,
     "port": 3339,
-    "remoteRoot": "/Users/claudneysessa/Developer/Docker/NodeJS/chapter02/rentx"
+    "remoteRoot": "/usr/app"
 }
 
 ```
