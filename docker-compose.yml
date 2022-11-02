@@ -8,4 +8,4 @@ services:
       - "3333:3333"
       - "3339:3339"
     volumes:
-      - .:/Users/claudneysessa/Developer/Docker/NodeJS/chapter02/rentx
+      - .:/usr/app

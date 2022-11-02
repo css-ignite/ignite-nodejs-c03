@@ -29,7 +29,7 @@
             "request": "attach",
             "restart": true,
             "port": 3339,
-            "remoteRoot": "/Users/claudneysessa/Developer/Docker/NodeJS/chapter02/rentx"
+            "remoteRoot": "/usr/app"
         }
     ]
 }
