@@ -1184,3 +1184,93 @@ Para forçar a substituição do container, precisamos executar o comando abaixo
 docker-compose up --force-recreate
 
 ```
+
+### ParanauÊ para resolver o problema de conexão
+
+Após muita luta consegui resolver o problema de conexão alterando o docker-compose.yml da seguinte forma:
+
+```yaml
+
+version: "3.7"
+
+services:
+  ignite_rentx_database:
+    image: postgres
+    container_name: ignite_rentx_database
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: ignite
+      POSTGRES_DB: rentx
+    volumes:
+      - pgdata:/data/postgres
+    networks:
+      - rentx_lan
+  ignite_rentx:
+    build: .
+    container_name: ignite_rentx
+    ports:
+      - "3333:3333"
+      - "3339:3339"
+    volumes:
+      - .:/usr/app
+    environment:
+      - "DATABSE_URL=postgres://docker:ignite@ignite_rentx_database:5432/rentx"
+    depends_on:
+      - ignite_rentx_database
+    networks:
+      - rentx_lan
+
+volumes:
+  pgdata:
+    driver: local
+
+networks:
+  rentx_lan: {}
+
+```
+
+Também tive que remover o ormconfig.json e adicionar a variável de ambiente DATABASE_URL no docker-compose.yml.
+
+Após esta configuração alterei o arquivo database/index.ts para o código abaixo:
+
+- No local do localhost eu coloquei o nome do container do banco de dados.
+
+```typescript
+
+import { DataSource } from "typeorm";
+
+const appDataSource = new DataSource({
+    type: "postgres",
+    host: "ignite_rentx_database",
+    port: 5432,
+    username: "docker",
+    password: "ignite",
+    database: "rentx"
+});
+
+appDataSource.initialize()
+    .then(() => {
+        console.log("Connected to database!");
+    })
+    .catch((error) => {
+        console.error("Connected fail!", error);
+    });
+
+```
+
+E por final tive que remover todo container e fazer um novo `docker-compose up -d` para funcionar.
+
+Seguem alguns POSTS que me ajudaram a resolver o problema:
+
+- [Não conecta o Banco de Dados](https://app.rocketseat.com.br/h/forum/node-js/c9b15888-3c76-461d-bd3d-53ad80c3127a)
+  -  https://app.rocketseat.com.br/h/forum/node-js/c9b15888-3c76-461d-bd3d-53ad80c3127a
+- [erro de conexão com o banco de dados](https://app.rocketseat.com.br/h/forum/node-js/e9a52112-a488-4b35-b7f7-547180697ce9)
+  - https://app.rocketseat.com.br/h/forum/node-js/e9a52112-a488-4b35-b7f7-547180697ce9
+- [Error: getaddrinfo EAI_AGAIN image_name
+](https://app.rocketseat.com.br/h/forum/node-js/730ffac9-3a76-4718-9500-26b167c7fc4c)
+  - https://app.rocketseat.com.br/h/forum/node-js/730ffac9-3a76-4718-9500-26b167c7fc4c
+- [Problemas ao configurar banco de dados](https://app.rocketseat.com.br/h/forum/node-js/b2ba6f0a-a66a-406e-9134-017110b46c5d)
+  - https://app.rocketseat.com.br/h/forum/node-js/b2ba6f0a-a66a-406e-9134-017110b46c5d
