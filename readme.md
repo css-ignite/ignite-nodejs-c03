@@ -1100,3 +1100,18 @@ yarn add typeorm
 yarn add reflect-metadata
 
 ```
+
+### Configurado o tsconfig.json
+
+Para configurar o tsconfig.json, precisamos adicionar o código abaixo.
+
+```json
+
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+    }
+}
+
+```
