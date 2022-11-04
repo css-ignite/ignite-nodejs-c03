@@ -13,6 +13,8 @@ services:
       POSTGRES_DB: rentx
     volumes:
       - pgdata:/data/postgres
+    networks:
+      - rentx_lan
   ignite_rentx:
     build: .
     container_name: ignite_rentx
@@ -21,7 +23,16 @@ services:
       - "3339:3339"
     volumes:
       - .:/usr/app
+    environment:
+      - "DATABSE_URL=postgres://docker:ignite@ignite_rentx_database:5432/rentx"
+    depends_on:
+      - ignite_rentx_database
+    networks:
+      - rentx_lan
 
 volumes:
   pgdata:
     driver: local
+
+networks:
+  rentx_lan: {}
