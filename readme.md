@@ -1263,6 +1263,41 @@ appDataSource.initialize()
 
 E por final tive que remover todo container e fazer um novo `docker-compose up -d` para funcionar.
 
+Depois de ter o código funcionando fui testando e verificando que estava adicionado de forma excessiva no docker-compose.yml e cheguei a seguinte configuração:
+
+```yml
+
+version: "3.7"
+
+services:
+  ignite_rentx_database:
+    image: postgres
+    container_name: ignite_rentx_database
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: docker
+      POSTGRES_PASSWORD: ignite
+      POSTGRES_DB: rentx
+    volumes:
+      - pgdata:/data/postgres
+  ignite_rentx:
+    build: .
+    container_name: ignite_rentx
+    ports:
+      - "3333:3333"
+      - "3339:3339"
+    volumes:
+      - .:/usr/app
+
+volumes:
+  pgdata:
+    driver: local
+
+
+```
+
 Seguem alguns POSTS que me ajudaram a resolver o problema:
 
 - Não conecta o Banco de Dados
