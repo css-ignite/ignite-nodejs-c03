@@ -1,7 +1,6 @@
 version: "3.7"
 
 services:
-
   ignite_rentx_database:
     image: postgres
     container_name: ignite_rentx_database
@@ -14,9 +13,9 @@ services:
       POSTGRES_DB: rentx
     volumes:
       - pgdata:/data/postgres
-
+    networks:
+      - rentx_lan
   ignite_rentx:
-    image: claudneysessa/rentx
     build: .
     container_name: ignite_rentx
     ports:
@@ -24,8 +23,16 @@ services:
       - "3339:3339"
     volumes:
       - .:/usr/app
+    environment:
+      - "DATABSE_URL=postgres://docker:ignite@ignite_rentx_database:5432/rentx"
+    depends_on:
+      - ignite_rentx_database
+    networks:
+      - rentx_lan
 
 volumes:
   pgdata:
-    name: pgignite_rentx_pgdata
     driver: local
+
+networks:
+  rentx_lan: {}

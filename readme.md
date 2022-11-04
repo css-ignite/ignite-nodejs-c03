@@ -1152,3 +1152,35 @@ Crio também um arquivo chamado ormconfig.json na raiz do projeto.
 }
 
 ```
+
+### Verificando o IP dos containers
+
+Para verificar o IP do container, precisamos executar o comando abaixo.
+
+```bash
+
+docker inspect rentx | grep IPAddress
+
+ou
+
+docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ignite_rentx
+
+```
+
+### Ajustando a network do container
+
+Para ajustar a network do container precisamos ajustar o docker-compose.yml adicionando as opções de network dos containers
+
+```yaml
+
+```
+
+### Forçando a substituição do container
+
+Para forçar a substituição do container, precisamos executar o comando abaixo.
+
+```bash
+
+docker-compose up --force-recreate
+
+```
