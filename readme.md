@@ -1115,3 +1115,32 @@ Para configurar o tsconfig.json, precisamos adicionar o código abaixo.
 }
 
 ```
+
+### Criando a conexão com o banco de dados
+
+Para iniciar a configuração crio uma pasta database dentro da pasta src.
+
+Dentro da pasta database crio um arquivo chamado index.ts.
+
+```typescript
+
+import { createConnection } from 'typeorm';
+
+createConnection();
+
+```
+
+Crio também um arquivo chamado ormconfig.json na raiz do projeto.
+
+```json
+
+{
+    "type": "postgres",
+    "host": "localhost",
+    "username": "postgres",
+    "password": "docker",
+    "database": "rentx",
+    "port": 5432
+}
+
+```
