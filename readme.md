@@ -1118,6 +1118,14 @@ Para configurar o tsconfig.json, precisamos adicionar o código abaixo.
 
 ### Criando a conexão com o banco de dados
 
+Vamos instalar o driver do banco de dados que vamos utilizar, no meu caso eu vou utilizar o Postgres.
+
+```bash
+
+yarn add pg
+
+```
+
 Para iniciar a configuração crio uma pasta database dentro da pasta src.
 
 Dentro da pasta database crio um arquivo chamado index.ts.
