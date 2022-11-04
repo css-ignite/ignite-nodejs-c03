@@ -5,13 +5,16 @@ version: "3.7"
 services:
 
   # A instrução db é o nome do serviço.
-  rentx:
+  ignite_rentx:
+
+    # A instrução image indica qual imagem será utilizada ou criada, quando a imagem não existir ela será criada com o nome indicado
+    image: claudneysessa/rentx
 
     # A instrução build indica qual será a imagem que será utilizada para a criação do container do serviço. Nesse caso, estamos utilizando a imagem rentx.
     build: .
 
     # A instrução container_name indica qual será o nome do container do serviço.
-    container_name: rentx
+    container_name: ignite_rentx
 
     # A instrução ports indica quais portas serão expostas do container do serviço.
     ports:
