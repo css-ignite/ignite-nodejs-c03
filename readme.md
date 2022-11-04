@@ -1084,3 +1084,19 @@ Para utilizar o debugger no container nos executamos o docker-compose up -d, e d
 Observe que estou utilizando a porta 3339, pois a porta 3333 está sendo utilizada pelo container.
 
 No meu script do docker-compose.yml eu estou utilizando a porta 3333 para a API, e estou utilizando a porta 3339 para o --inspect=0.0.0.0:3339 configurado la no meu package.json quando solicito a execução pelo ts-node-dev.
+
+## TypeORM
+
+O TypeORM é um ORM que pode ser utilizado com Node.js, TypeScript, JavaScript, Ionic, Cordova, PhoneGap, NativeScript, Expo, React Native, Vue.js, Angular, Nest, Ionic, Meteor e outras plataformas que suportam JavaScript.
+
+### Instalando o TypeORM
+
+Para instalar o TypeORM, precisamos executar o comando abaixo.
+
+```bash
+
+yarn add typeorm
+
+yarn add reflect-metadata
+
+```
