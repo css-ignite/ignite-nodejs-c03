@@ -1265,12 +1265,11 @@ E por final tive que remover todo container e fazer um novo `docker-compose up -
 
 Seguem alguns POSTS que me ajudaram a resolver o problema:
 
-- [Não conecta o Banco de Dados](https://app.rocketseat.com.br/h/forum/node-js/c9b15888-3c76-461d-bd3d-53ad80c3127a)
-  -  https://app.rocketseat.com.br/h/forum/node-js/c9b15888-3c76-461d-bd3d-53ad80c3127a
-- [erro de conexão com o banco de dados](https://app.rocketseat.com.br/h/forum/node-js/e9a52112-a488-4b35-b7f7-547180697ce9)
-  - https://app.rocketseat.com.br/h/forum/node-js/e9a52112-a488-4b35-b7f7-547180697ce9
-- [Error: getaddrinfo EAI_AGAIN image_name
-](https://app.rocketseat.com.br/h/forum/node-js/730ffac9-3a76-4718-9500-26b167c7fc4c)
-  - https://app.rocketseat.com.br/h/forum/node-js/730ffac9-3a76-4718-9500-26b167c7fc4c
-- [Problemas ao configurar banco de dados](https://app.rocketseat.com.br/h/forum/node-js/b2ba6f0a-a66a-406e-9134-017110b46c5d)
-  - https://app.rocketseat.com.br/h/forum/node-js/b2ba6f0a-a66a-406e-9134-017110b46c5d
+- Não conecta o Banco de Dados
+  - [https://app.rocketseat.com.br/h/forum/node-js/c9b15888-3c76-461d-bd3d-53ad80c3127a](https://app.rocketseat.com.br/h/forum/node-js/c9b15888-3c76-461d-bd3d-53ad80c3127a)
+- erro de conexão com o banco de dados
+  - [https://app.rocketseat.com.br/h/forum/node-js/e9a52112-a488-4b35-b7f7-547180697ce9](https://app.rocketseat.com.br/h/forum/node-js/e9a52112-a488-4b35-b7f7-547180697ce9)
+- Error: getaddrinfo EAI_AGAIN image_name
+  - [https://app.rocketseat.com.br/h/forum/node-js/730ffac9-3a76-4718-9500-26b167c7fc4c´](https://app.rocketseat.com.br/h/forum/node-js/730ffac9-3a76-4718-9500-26b167c7fc4c)
+- Problemas ao configurar banco de dados
+  - [https://app.rocketseat.com.br/h/forum/node-js/b2ba6f0a-a66a-406e-9134-017110b46c5d](https://app.rocketseat.com.br/h/forum/node-js/b2ba6f0a-a66a-406e-9134-017110b46c5d)
