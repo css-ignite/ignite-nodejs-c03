@@ -21,6 +21,8 @@ services:
     ports:
       - "3333:3333"
       - "3339:3339"
+    depends_on:
+      - ignite_rentx_database
     network_mode: host
     volumes:
       - .:/usr/app
