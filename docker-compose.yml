@@ -11,6 +11,7 @@ services:
       POSTGRES_USER: docker
       POSTGRES_PASSWORD: ignite
       POSTGRES_DB: rentx
+    network_mode: host
     volumes:
       - pgdata:/data/postgres
   ignite_rentx:
@@ -20,6 +21,7 @@ services:
     ports:
       - "3333:3333"
       - "3339:3339"
+    network_mode: host
     volumes:
       - .:/usr/app
 

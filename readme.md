@@ -1148,7 +1148,10 @@ Crio também um arquivo chamado ormconfig.json na raiz do projeto.
     "username": "postgres",
     "password": "docker",
     "database": "rentx",
-    "port": 5432
+    "port": 5432,
+    "migrations": [
+        "./src/database/migrations/*.ts"
+    ],
 }
 
 ```
@@ -1308,3 +1311,62 @@ Seguem alguns POSTS que me ajudaram a resolver o problema:
   - [https://app.rocketseat.com.br/h/forum/node-js/730ffac9-3a76-4718-9500-26b167c7fc4c´](https://app.rocketseat.com.br/h/forum/node-js/730ffac9-3a76-4718-9500-26b167c7fc4c)
 - Problemas ao configurar banco de dados
   - [https://app.rocketseat.com.br/h/forum/node-js/b2ba6f0a-a66a-406e-9134-017110b46c5d](https://app.rocketseat.com.br/h/forum/node-js/b2ba6f0a-a66a-406e-9134-017110b46c5d)
+
+## Migrations
+
+### Package.json
+
+Adicionar os scripts typeorm e migrations no package.json
+
+```json
+
+  "scripts": {
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
+    "migrations": "ts-node-dev ./node_modules/typeorm/cli.js migration:create"
+  },
+
+```
+
+### .src/database/index.ts
+
+```typescript
+
+import { DataSource } from "typeorm";
+
+const appDataSource = new DataSource({
+    type: "postgres",
+    // host: "ignite_rentx_database",
+    host: "localhost",
+    port: 5432,
+    username: "docker",
+    password: "ignite",
+    database: "rentx",
+    synchronize: true,
+    logging: true,
+    entities: [
+        "./src/database/entities/*.ts"
+    ],
+    migrations: [
+        "./src/database/migrations/*.ts"
+    ],
+});
+
+appDataSource.initialize()
+    .then(() => {
+        console.log("Connected to database!");
+    })
+    .catch((error) => {
+        console.error("Connected fail!", error);
+    });
+
+```
+
+### Criando a migration de categoria
+
+Para criar a migration de categoria, precisamos executar o comando abaixo.
+
+```bash
+
+yarn typeorm migration:create ./src/database/migrations/CreateCategories
+
+```
