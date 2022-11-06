@@ -15,7 +15,8 @@ const datasource = new DataSource({
 });
 
 const appDataSource = datasource.initialize()
-    .then(() => {
+    .then(async () => {
+        datasource.dropDatabase();
         console.log("- - - - - - - - - - - - - - - - - - - - - - -");
         console.log("Connected to database!");
         console.log("- - - - - - - - - - - - - - - - - - - - - - -");
