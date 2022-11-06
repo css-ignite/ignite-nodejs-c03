@@ -16,7 +16,9 @@ const datasource = new DataSource({
 
 const appDataSource = datasource.initialize()
     .then(async () => {
-        datasource.dropDatabase();
+        datasource.runMigrations();
+        // datasource.dropDatabase()
+        // AppDataSource.undoLastMigration()
         console.log("- - - - - - - - - - - - - - - - - - - - - - -");
         console.log("Connected to database!");
         console.log("- - - - - - - - - - - - - - - - - - - - - - -");
