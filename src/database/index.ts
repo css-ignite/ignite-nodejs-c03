@@ -1,6 +1,14 @@
 import { createConnection } from "typeorm";
 
-createConnection();
+const datasource = createConnection()
+    .then(() => {
+        console.log("createConnection - Connected to database!");
+    })
+    .catch((error) => {
+        console.error("createConnection - Connected fail!", error);
+    });
+
+export { datasource };
 
 // import { DataSource } from "typeorm";
 
