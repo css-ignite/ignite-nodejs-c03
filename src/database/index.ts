@@ -72,4 +72,4 @@ const appDataSource = datasource.initialize()
         console.error("Connected fail!", error);
     });
 
-export { appDataSource };
+export { datasource };
