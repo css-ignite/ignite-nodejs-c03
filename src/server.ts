@@ -25,5 +25,7 @@ app.use(
 );
 
 app.listen(port, () => {
-    console.log("Server is running on port", port);
+    console.log("- - - - - - - - - - - - - - - - - - - - - - - - -");
+    console.log("O servidor está rodando na porta", port);
+    console.log("- - - - - - - - - - - - - - - - - - - - - - - - -");
 });

@@ -1,6 +1,7 @@
 version: "3.7"
 
 services:
+
   ignite_rentx_database:
     image: postgres
     container_name: ignite_rentx_database
@@ -14,6 +15,7 @@ services:
     network_mode: host
     volumes:
       - pgdata:/data/postgres
+
   ignite_rentx:
     build: .
     container_name: ignite_rentx
