@@ -5,6 +5,8 @@
     "username": "docker",
     "password": "ignite",
     "database": "rentx",
+    "syncronize": true,
+    "logging": true,
     "migrations": [
         "./src/database/migrations/*.ts"
     ],
