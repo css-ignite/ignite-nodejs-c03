@@ -32,3 +32,17 @@ O comando `docker-compose down -v --rmi all --remove-orphans` para e remove os c
 docker-compose down -v --rmi all --remove-orphans
 
 ```
+
+Para obter o ip do container, execute o comando `docker inspect` que pode ser utilizado das formas descritas abaixo.
+
+```bash
+
+docker inspect ignite_rentx | grep "IPAddress"
+
+```
+
+```bash
+
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ignite_rentx
+
+```
