@@ -16,17 +16,15 @@ const datasource = new DataSource({
 
 const appDataSource = datasource.initialize()
     .then(async () => {
-        datasource.runMigrations();
+        datasource.runMigrations().then(() => {
+            console.log("Migrations ok!");
+        });
         // datasource.dropDatabase()
         // AppDataSource.undoLastMigration()
-        console.log("- - - - - - - - - - - - - - - - - - - - - - -");
         console.log("Connected to database!");
-        console.log("- - - - - - - - - - - - - - - - - - - - - - -");
     })
     .catch((error) => {
-        console.log("- - - - - - - - - - - - - - - - - - - - - - -");
         console.error("Connected fail!", error);
-        console.log("- - - - - - - - - - - - - - - - - - - - - - -");
     });
 
 export { datasource };
