@@ -16,6 +16,7 @@ services:
       - pgdata:/data/postgres
 
   ignite_rentx:
+    image: claudneysessa/ignite_rentx
     build: .
     container_name: ignite_rentx
     restart: always
