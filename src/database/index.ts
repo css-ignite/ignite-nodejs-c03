@@ -1,30 +1,21 @@
-import { DataSource } from "typeorm";
+import { createConnection, getConnectionOptions } from 'typeorm';
 
-const datasource = new DataSource({
-    type: "postgres",
-    host: "ignite_rentx_database",
-    port: 5432,
-    username: "docker",
-    password: "ignite",
-    database: "rentx",
-    synchronize: true,
-    logging: true,
-    migrations: [
-        ".src/database/migrations"
-    ]
-});
+interface IOptions {
+    host: string;
+}
 
-const appDataSource = datasource.initialize()
-    .then(async () => {
-        datasource.runMigrations().then(() => {
-            console.log("Migrations ok!");
-        });
-        // datasource.dropDatabase()
-        // AppDataSource.undoLastMigration()
-        console.log("Connected to database!");
+getConnectionOptions().then(options => {
+    const newOptions = options as IOptions;
+    newOptions.host = 'ignite_rentx_database'; //Essa opção deverá ser EXATAMENTE o nome dado ao service do banco de dados
+    createConnection({
+        ...options,
     })
-    .catch((error) => {
-        console.error("Connected fail!", error);
-    });
-
-export { datasource };
+        .then(() => {
+            console.log("- - - - - - - - - - - - - - - - - - - - - - -");
+            console.log("Connected to database!");
+            console.log("- - - - - - - - - - - - - - - - - - - - - - -");
+        })
+        .catch((error) => {
+            console.error("Connected fail!", error);
+        });
+});

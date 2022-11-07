@@ -19,7 +19,7 @@
     "swagger-autogen": "^2.22.0",
     "swagger-jsdoc": "^6.2.5",
     "swagger-ui-express": "^4.5.0",
-    "typeorm": "^0.3.10",
+    "typeorm": "0.2.45",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
