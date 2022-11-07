@@ -1,50 +1,41 @@
-import { SpecificationsModel } from "../../models/SpecificationsModel";
+import { getRepository, Repository } from "typeorm";
+import { SpecificationsModel } from "../../entities/SpecificationsModel";
 import {
   ISpecificationsRepository,
   ICreateSpecificationsDTO,
 } from "../ISpecificationsRepository";
 
 class SpecificationsRepository implements ISpecificationsRepository {
-  private Specifications: SpecificationsModel[];
 
-  // eslint-disable-next-line no-use-before-define
-  private static INSTANCE: SpecificationsRepository;
+  private repository: Repository<SpecificationsModel>;
 
   constructor() {
-    this.Specifications = [];
-  }
-
-  public static getInstance(): SpecificationsRepository {
-    if (!SpecificationsRepository.INSTANCE) {
-      SpecificationsRepository.INSTANCE = new SpecificationsRepository();
+    try {
+      this.repository = getRepository(SpecificationsModel);
+    } catch (error) {
+      console.log(`Erro: ${error}`);
     }
-
-    return SpecificationsRepository.INSTANCE;
   }
 
-  create({ name, description }: ICreateSpecificationsDTO) {
-    const Specifications = new SpecificationsModel();
+  async create({ name, description }: ICreateSpecificationsDTO): Promise<SpecificationsModel> {
 
-    Object.assign(Specifications, {
+    const Specifications = this.repository.create({
       name,
       description,
-      created_at: new Date(),
     });
 
-    this.Specifications.push(Specifications);
+    await this.repository.save(Specifications);
 
     return Specifications;
   }
 
-  list() {
-    return this.Specifications;
+  async list(): Promise<SpecificationsModel[]> {
+    const Specifications = await this.repository.find();
+    return Specifications;
   }
 
-  findByName(name: string) {
-    const Specifications = this.Specifications.find(
-      (Specifications) => Specifications.name === name
-    );
-
+  async findByName(name: string): Promise<SpecificationsModel> {
+    const Specifications: SpecificationsModel = await this.repository.findOne({ name }) as SpecificationsModel;
     return Specifications;
   }
 }

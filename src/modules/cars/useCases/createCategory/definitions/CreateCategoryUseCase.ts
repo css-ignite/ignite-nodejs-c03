@@ -6,11 +6,11 @@ interface IRequest {
 }
 
 class CreateCategoryUseCase {
-  constructor(private categoriesRepository: ICategoryRepository) {}
+  constructor(private categoriesRepository: ICategoryRepository) { }
 
-  execute({ name, description }: IRequest) {
+  async execute({ name, description }: IRequest) {
     try {
-      return this.categoriesRepository.create({ name, description });
+      return await this.categoriesRepository.create({ name, description });
     } catch (error) {
       throw new Error("Create category failed!");
     }

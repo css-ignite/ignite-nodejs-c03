@@ -4,9 +4,9 @@ import fs from "fs";
 import { ICategoryRepository } from "../../../repositories/ICategoriesRepository";
 
 class ImportCategoriesUseCase {
-  constructor(private categoriesRepository: ICategoryRepository) {}
+  constructor(private categoriesRepository: ICategoryRepository) { }
 
-  execute(file: Express.Multer.File): void {
+  async execute(file: Express.Multer.File): Promise<void> {
     const stream = fs.createReadStream(file.path);
     const parseFile = parse({ delimiter: "," });
 
@@ -14,7 +14,7 @@ class ImportCategoriesUseCase {
       .pipe(parseFile)
       .on("data", async (line) => {
         const [name, description] = line;
-        const category = this.categoriesRepository.create({
+        const category = await this.categoriesRepository.create({
           name,
           description,
         });

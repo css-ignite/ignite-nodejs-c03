@@ -1,7 +1,9 @@
 import { swaggerApiErrorSchema } from "./schemas/swaggerApiErrorSchema";
 import { swaggerApiResponseSchema } from "./schemas/swaggerApiResponseSchema";
 import { swaggerCategorySchema } from "./schemas/swaggerCategorySchema";
+import { swaggerCreateCategorySchema } from "./schemas/swaggerCreateCategorySchema";
 import { swaggerSpecificationsSchema } from "./schemas/swaggerSpecificationsSchema";
+import { swaggerCreateSpecificationsSchema } from "./schemas/swaggerCreateSpecificationsSchema";
 
 const swaggerApiDescription = `
   <p style="line-height: 0">API desenvolvida durante as aulas do curso Ignite Trilha NodeJS.\n
@@ -53,7 +55,9 @@ const swaggerOptions = {
     components: {
       schemas: {
         Category: swaggerCategorySchema,
+        CreateCategory: swaggerCreateCategorySchema,
         Specifications: swaggerSpecificationsSchema,
+        CreateSpecifications: swaggerCreateSpecificationsSchema,
         ApiError: swaggerApiErrorSchema,
         ApiResponse: swaggerApiResponseSchema,
       },

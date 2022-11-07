@@ -6,11 +6,11 @@ interface IRequest {
 }
 
 class CreateSpecificationsUseCase {
-  constructor(private specificationsRepository: ISpecificationsRepository) {}
+  constructor(private specificationsRepository: ISpecificationsRepository) { }
 
-  execute({ name, description }: IRequest) {
+  async execute({ name, description }: IRequest) {
     try {
-      return this.specificationsRepository.create({ name, description });
+      return await this.specificationsRepository.create({ name, description });
     } catch (error) {
       throw new Error("Create spacification failed!");
     }

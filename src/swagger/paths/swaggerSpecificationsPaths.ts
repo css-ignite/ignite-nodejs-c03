@@ -12,7 +12,7 @@
  *       content:
  *        application/json:
  *           schema:
- *             $ref: '#/components/schemas/Specifications'
+ *             $ref: '#/components/schemas/CreateSpecifications'
  *       required: true
  *     responses:
  *      '200':

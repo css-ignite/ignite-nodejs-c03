@@ -5,10 +5,10 @@ interface IRequest {
 }
 
 class ListCategoryByNameUseCase {
-  constructor(private categoriesRepository: ICategoryRepository) {}
+  constructor(private categoriesRepository: ICategoryRepository) { }
 
-  execute({ name }: IRequest) {
-    const category = this.categoriesRepository.findByName(name);
+  async execute({ name }: IRequest) {
+    const category = await this.categoriesRepository.findByName(name);
     return category;
   }
 }

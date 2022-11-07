@@ -8,6 +8,7 @@ const app = express();
 const port = 3333;
 
 app.use(express.json());
+
 app.use("/v1", router);
 
 app.use(

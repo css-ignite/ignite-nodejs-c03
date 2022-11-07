@@ -13,11 +13,14 @@ const swaggerCategorySchema = {
       type: "string",
       example: "Veículo utilitário esportivo ou Veículo Desportivo",
     },
-    shipDate: {
+    created_at: {
       type: "string",
-      format: "date-time",
-      example: "2022-10-27T15:00:32.255Z",
+      example: "2021-07-25T00:00:00.000Z",
     },
+    updated_at: {
+      type: "string",
+      example: "2021-07-25T00:00:00.000Z",
+    }
   },
   xml: {
     name: "Category",

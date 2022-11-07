@@ -3,14 +3,14 @@ import { Request, Response } from "express";
 import { ImportCategoriesUseCase } from "./ImportCategoriesUseCase";
 
 class ImportCategoryController {
-  constructor(private importCategoryUseCase: ImportCategoriesUseCase) {}
+  constructor(private importCategoryUseCase: ImportCategoriesUseCase) { }
 
-  handle(request: Request, response: Response): Response {
-    const { file } = request;
+  async handle(request: Request, response: Response): Promise<Response> {
+    const { file } = request as any;
 
-    const listOfCategories = this.importCategoryUseCase.execute(file);
+    const listOfCategories = await this.importCategoryUseCase.execute(file);
 
-    return response.status(200).json(listOfCategories);
+    return response.status(200).json({ message: "Importing categories!" });
   }
 }
 

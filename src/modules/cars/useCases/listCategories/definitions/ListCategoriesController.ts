@@ -3,10 +3,10 @@ import { Request, Response } from "express";
 import { ListCategoryUseCase } from "./ListCategoriesUseCase";
 
 class ListCategoryController {
-  constructor(private listCategoryUseCase: ListCategoryUseCase) {}
+  constructor(private listCategoryUseCase: ListCategoryUseCase) { }
 
-  handle(request: Request, response: Response): Response {
-    const listOfCategories = this.listCategoryUseCase.execute();
+  async handle(request: Request, response: Response): Promise<Response> {
+    const listOfCategories = await this.listCategoryUseCase.execute();
 
     return response.status(201).json(listOfCategories);
   }

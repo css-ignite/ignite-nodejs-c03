@@ -14,14 +14,17 @@ const swaggerSpecificationsSchema = {
       example:
         "Os airbags são almofadas de enchimento rápido destinadas a proteger os passageiros em caso de colisão.",
     },
-    shipDate: {
+    created_at: {
       type: "string",
-      format: "date-time",
-      example: "2022-10-27T15:00:32.255Z",
+      example: "2021-07-30T00:00:00.000Z",
     },
+    updated_at: {
+      type: "string",
+      example: "2021-07-30T00:00:00.000Z",
+    }
   },
   xml: {
-    name: "Category",
+    name: "Specifications",
   },
 };
 

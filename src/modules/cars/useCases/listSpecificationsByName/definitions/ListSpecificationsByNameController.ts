@@ -5,13 +5,17 @@ import { ListSpecificationsByNameUseCase } from "./ListSpecificationsByNameUseCa
 class ListSpecificationsByNameController {
   constructor(
     private listSpecificationsByNameUseCase: ListSpecificationsByNameUseCase
-  ) {}
+  ) { }
 
-  handle(request: Request, response: Response): Response {
+  async handle(request: Request, response: Response): Promise<Response> {
     const { name } = request.params;
-    const listOfSpecifications = this.listSpecificationsByNameUseCase.execute({
+    const listOfSpecifications = await this.listSpecificationsByNameUseCase.execute({
       name,
     });
+
+    if (!listOfSpecifications) {
+      return response.status(404).json({ error: "Specification not found!" });
+    }
 
     return response.status(201).json(listOfSpecifications);
   }

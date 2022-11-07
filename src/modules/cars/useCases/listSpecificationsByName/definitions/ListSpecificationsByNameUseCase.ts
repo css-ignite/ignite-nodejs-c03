@@ -5,10 +5,10 @@ interface IRequest {
 }
 
 class ListSpecificationsByNameUseCase {
-  constructor(private specificationsRepository: ISpecificationsRepository) {}
+  constructor(private specificationsRepository: ISpecificationsRepository) { }
 
-  execute({ name }: IRequest) {
-    const specifications = this.specificationsRepository.findByName(name);
+  async execute({ name }: IRequest) {
+    const specifications = await this.specificationsRepository.findByName(name);
     return specifications;
   }
 }

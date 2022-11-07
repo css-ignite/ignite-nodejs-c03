@@ -12,7 +12,7 @@
  *       content:
  *        application/json:
  *           schema:
- *             $ref: '#/components/schemas/Category'
+ *             $ref: '#/components/schemas/CreateCategory'
  *       required: true
  *     responses:
  *      '200':

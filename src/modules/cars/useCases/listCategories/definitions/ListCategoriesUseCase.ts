@@ -1,10 +1,10 @@
 import { ICategoryRepository } from "../../../repositories/ICategoriesRepository";
 
 class ListCategoryUseCase {
-  constructor(private categoriesRepository: ICategoryRepository) {}
+  constructor(private categoriesRepository: ICategoryRepository) { }
 
-  execute() {
-    return this.categoriesRepository.list();
+  async execute() {
+    return await this.categoriesRepository.list();
   }
 }
 
