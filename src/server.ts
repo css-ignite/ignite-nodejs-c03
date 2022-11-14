@@ -1,6 +1,9 @@
 import express, { NextFunction, Request, Response } from "express";
 import { AppError } from "./AppErros";
 import { router } from "./routes";
+import log from "log";
+
+require("log-node")();
 
 import "./database";
 
@@ -26,7 +29,5 @@ app.use(
 );
 
 app.listen(port, () => {
-    console.log("- - - - - - - - - - - - - - - - - - - - - - -");
-    console.log("O servidor está rodando na porta", port);
-    console.log("- - - - - - - - - - - - - - - - - - - - - - -");
+    console.log(`Server is running on port ${port}`);
 });

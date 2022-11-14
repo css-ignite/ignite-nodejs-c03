@@ -1,4 +1,5 @@
 import { createConnection, getConnectionOptions } from 'typeorm';
+import log from "log";
 
 interface IOptions {
     host: string;
@@ -11,11 +12,9 @@ getConnectionOptions().then(options => {
         ...options,
     })
         .then(() => {
-            console.log("- - - - - - - - - - - - - - - - - - - - - - -");
-            console.log("Connected to database!");
-            console.log("- - - - - - - - - - - - - - - - - - - - - - -");
+            console.log(`Connected to database`);
         })
         .catch((error) => {
-            console.error("Connected fail!", error);
+            console.log(`Connected fail`);
         });
 });
